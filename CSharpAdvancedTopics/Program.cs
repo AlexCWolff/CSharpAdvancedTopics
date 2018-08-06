@@ -1,26 +1,18 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-
-namespace CSharpAdvancedTopics
+﻿namespace CSharpAdvancedTopics
 {
+
     class Program
     {
         static void Main(string[] args)
         {
-            // Boxing, not type safe
-            var list = new ArrayList();
-            list.Add(1);
-            list.Add("Alex");
-            list.Add(DateTime.Today);
+            // Can't instantiate abstract class
+            // var shape = new Shape();
 
-            // Throws an error
-            var number = (int)list[1];
+            var circle = new Circle();
+            circle.Draw();
 
-            // Use generic list instead
-            var anotherList = new List<int>();
-            var names = new List<string>();
-            names.Add("Alex");
+            var rectangle = new Rectangle();
+            rectangle.Draw();
         }
     }
 }
