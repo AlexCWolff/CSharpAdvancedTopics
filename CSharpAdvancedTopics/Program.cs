@@ -1,16 +1,23 @@
-﻿namespace CSharpAdvancedTopics
+﻿using System;
+
+namespace CSharpAdvancedTopics
 {
     class Program
     {
         static void Main(string[] args)
         {
-            var dbMigrator = new DbMigrator(new Logger());
+            // Upcast
+            Text text = new Text();
+            Shape shape = text;
 
-            var logger = new Logger();
-            var installer = new Installer(logger);
+            text.Width = 200;
+            shape.Width = 100;
 
-            dbMigrator.Migrate();
-            installer.Install();
+            Console.WriteLine(text.Width);
+
+            // Downcast
+            Shape shape2 = new Text();
+            Text text2 = (Text) shape2;
         }
     }
 }
