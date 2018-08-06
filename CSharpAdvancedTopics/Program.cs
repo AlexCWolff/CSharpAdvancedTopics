@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace CSharpAdvancedTopics
 {
@@ -6,18 +8,19 @@ namespace CSharpAdvancedTopics
     {
         static void Main(string[] args)
         {
-            // Upcast
-            Text text = new Text();
-            Shape shape = text;
+            // Boxing, not type safe
+            var list = new ArrayList();
+            list.Add(1);
+            list.Add("Alex");
+            list.Add(DateTime.Today);
 
-            text.Width = 200;
-            shape.Width = 100;
+            // Throws an error
+            var number = (int)list[1];
 
-            Console.WriteLine(text.Width);
-
-            // Downcast
-            Shape shape2 = new Text();
-            Text text2 = (Text) shape2;
+            // Use generic list instead
+            var anotherList = new List<int>();
+            var names = new List<string>();
+            names.Add("Alex");
         }
     }
 }
