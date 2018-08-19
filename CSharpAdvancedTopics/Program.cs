@@ -1,18 +1,14 @@
-﻿namespace CSharpAdvancedTopics
-{
+﻿using System;
 
+namespace CSharpAdvancedTopics
+{
     class Program
     {
         static void Main(string[] args)
         {
-            // Can't instantiate abstract class
-            // var shape = new Shape();
-
-            var circle = new Circle();
-            circle.Draw();
-
-            var rectangle = new Rectangle();
-            rectangle.Draw();
+            var orderProcessor = new OrderProcessor(new ShippingCalculator());
+            var order = new Order {DatePlaced = DateTime.Now, TotalPrice = 100f};
+            orderProcessor.Process(order);
         }
     }
 }
