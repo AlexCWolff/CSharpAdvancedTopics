@@ -1,11 +1,14 @@
 namespace CSharpAdvancedTopics
-{   
-    class Program 
+{
+    class Program
     {
         static void Main(string[] args)
         {
-            var dbMigrator = new DbMigrator(new FileLogger("C:\\temp\\LOG.txt"));
-            dbMigrator.Migrate();
+            var encoder = new VideoEncoder();
+          
+            encoder.RegisterNotificationChannel(new MailNotificationChannel());
+            encoder.RegisterNotificationChannel(new SmsNotificationChannel());
+            encoder.Encode(new Video());
         }
     }
 }
