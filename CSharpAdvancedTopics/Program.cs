@@ -1,14 +1,11 @@
-﻿using System;
-
 namespace CSharpAdvancedTopics
-{
-    class Program
+{   
+    class Program 
     {
         static void Main(string[] args)
         {
-            var orderProcessor = new OrderProcessor(new ShippingCalculator());
-            var order = new Order {DatePlaced = DateTime.Now, TotalPrice = 100f};
-            orderProcessor.Process(order);
+            var dbMigrator = new DbMigrator(new FileLogger("C:\\temp\\LOG.txt"));
+            dbMigrator.Migrate();
         }
     }
 }
