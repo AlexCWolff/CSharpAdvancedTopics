@@ -7,14 +7,16 @@ namespace CSharpAdvancedTopics
     {
         static void Main(string[] args)
         {
-            // Nullable<DateTime> date = null;
-            DateTime? date = null;
-            // Coalescing operator. If date has a value, assign, otherwise use DateTime.Today
-            DateTime date2 = date ?? DateTime.Today;
+            dynamic a = 10;
+            dynamic b = 10;
+            // will be dynamic
+            var c = a + b;
 
-            DateTime date3 = (date != null) ? date.GetValueOrDefault() : DateTime.Today;
-
-            Console.WriteLine(date2);
+            int i = 5;
+            // will be integer
+            dynamic d = i;
+            // implicit cast from int to long
+            long l = d;
         }
     }
 }
