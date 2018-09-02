@@ -1,24 +1,21 @@
-using System;
-
 namespace CSharpAdvancedTopics 
 {
     class Program 
     {
         static void Main(string[] args)
         {
-            // Lambdas are anonymous functions; they have no access modifier, name, or return statement
-            // 'args => expression'
-            // '() => ...' if no arg
-            // 'x => ...' if one arg
-            // '(x, y, z) => ...' if multiple args
+            // Events are a mechanism for communicating between objects
+            var video = new Video() {Title = "Video 1"};
+            var videoEncoder = new VideoEncoder(); // publisher
+            var mailService = new MailService(); // subscriber
+            var messageService = new MessageService(); // subscriber
             
-            var books = new BookRepository().GetBooks();
-            var cheapBooks = books.FindAll(b => b.Price < 10);
-            
-            foreach (var book in cheapBooks)
-            {
-                Console.WriteLine(book.Title);
-            }
+            // no brackets; this is a reference/pointer, not a function call
+            videoEncoder.VideoEncoded += mailService.OnVideoEncoded; 
+            // subscribers can be added without changing the publisher
+            videoEncoder.VideoEncoded += messageService.OnVideoEncoded;
+
+            videoEncoder.Encode(video);
         }
     }
 }
