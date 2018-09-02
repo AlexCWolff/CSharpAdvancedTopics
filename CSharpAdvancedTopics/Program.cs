@@ -6,27 +6,19 @@ namespace CSharpAdvancedTopics
     {
         static void Main(string[] args)
         {
-            // A delegate is a pointer to a method with a signature
-            // Every delegate is essentially a class that derives from System.Delegate and System.MulticastDelegate
-            // Use a delegate over an interface when: 
-            // An eventing design pattern is used 
-            // The caller doesn't need access to other properties and methods on the object implementing the method.
+            // Lambdas are anonymous functions; they have no access modifier, name, or return statement
+            // 'args => expression'
+            // '() => ...' if no arg
+            // 'x => ...' if one arg
+            // '(x, y, z) => ...' if multiple args
             
-            var processor = new PhotoProcessor();
-            var filters = new PhotoFilters();
-
-            // PhotoProcessor.PhotoFilterHandler filterHandler = filters.ApplyBrightness;
-            Action<Photo> filterHandler = filters.ApplyBrightness;
-            filterHandler += filters.ApplyContrast;
-            // Can even declare and use delegates here
-            filterHandler += RemoveRedEyeFilter;
+            var books = new BookRepository().GetBooks();
+            var cheapBooks = books.FindAll(b => b.Price < 10);
             
-            processor.Process("photo.jpg", filterHandler);
-        }
-        
-        static void RemoveRedEyeFilter(Photo photo)
-        {
-            Console.WriteLine("Apply RemoveRedEye");
+            foreach (var book in cheapBooks)
+            {
+                Console.WriteLine(book.Title);
+            }
         }
     }
 }
