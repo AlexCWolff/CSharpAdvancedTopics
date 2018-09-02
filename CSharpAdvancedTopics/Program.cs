@@ -1,22 +1,26 @@
-using System;
-using System.Collections.Generic;
+﻿using System;
+using System.IO;
 
-namespace CSharpAdvancedTopics 
+namespace CSharpAdvancedTopics
 {
-    class Program 
+    class Program
     {
         static void Main(string[] args)
         {
-            dynamic a = 10;
-            dynamic b = 10;
-            // will be dynamic
-            var c = a + b;
-
-            int i = 5;
-            // will be integer
-            dynamic d = i;
-            // implicit cast from int to long
-            long l = d;
+            try
+            {
+                var api = new YouTubeApi();
+                var videos = api.GetVideos("Alex");
+            }
+            catch (Exception ex)
+            {
+                // If 'try' fails, catch exception and writeline to console instead
+                Console.WriteLine(ex.Message);
+            }
+            // finally
+            // {
+            //      Use finally when you need to make sure some code is run, like closing a handle.
+            // }
         }
     }
 }
